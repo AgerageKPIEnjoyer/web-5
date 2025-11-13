@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chester Bennington</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+  <script>
+    window.onload = function() {
+      imageMapResize();
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="block block1">
+      <div class="blockX"><h1>One More Light</h1></div>
+      <p>One Step Closer to the Edge</p>
+    </header>
+
+    <aside class="block block2">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="index.html">Plain</a></li>
+        <li><a href="index.html">Flex</a></li>
+        <li><a href="index.html">Grid</a></li>     
+      </ul>
+    </aside>
+
+    <div class="block block3">
+      <p>Information about an artist</p>
+      <div class="controls-container">        
+        <div class="control-group">
+          <button id="swap-button" class="js-button">Змінити місцями блоки 2 і 5</button>
+        </div>            
+      </div>
+    </div>
+
+    <div class="block block4">
+        <img src="images/chester_bennington.png" alt="Chester Bennington" usemap="#chestermap" title="Click on a face to see information about an artist.">
+        <map name="chestermap">
+          <area shape="circle" coords="264, 150, 94" href="https://en.wikipedia.org/wiki/Chester_Bennington" alt="Chester Bennington" target="_blank">
+        </map>
+
+        <div class="tools-wrapper">    
+          <div class="tool-column" id="pentagon-column">
+            <div class="control-group">
+                <label for="pentagon-side">Сторона п'ятикутника:</label>
+                <input type="number" id="pentagon-side" value="69" min="0">
+            </div>
+          </div>
+          
+          <div class="tool-column" id="flipper-column">
+            <div id="flip-form-container">
+              <div class="control-group">
+                <label for="number-to-flip">Число для "перевертання":</label>
+                <input type="number" id="number-to-flip" min="0" placeholder="Введіть натуральне число">
+                <button id="flip-button" class="js-button" style="margin-top: 10px;">Перевернути</button>
+              </div>
+            </div>
+          </div>      
+        </div>
+    </div>
+
+    <div class="block block6">
+      <p>Chester Bennington</p>
+    </div>
+    <div class="block block5">
+      <h3>Main Facts</h3>
+      <ol>
+        <li>Lead vocalist of Linkin Park, known for his combination of melodic singing and screaming.</li>
+        <li>Chester's leadership image and vocals largely defined the sound of the albums "Hybrid Theory" and "Meteora".</li>
+        <li>He had a solo project, Dead by Sunrise, and was temporarily the vocalist for Stone Temple Pilots (2013-2015).</li>
+        <li>Died July 20, 2017 — his contribution to the band's music remains defining.</li>
+      </ol>
+    </div>
+
+    <footer class="block block7">
+      <p>Hybrid Theory Forever</p>
+      <div class="blockY"><h1>LINKIN PARK</h1></div>
+    </footer>
+  </div>
+  <script src="script.js" defer></script>
+</html>

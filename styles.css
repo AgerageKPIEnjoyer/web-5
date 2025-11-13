@@ -1,0 +1,228 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  background: #121212;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+.block {
+  padding: 15px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Головний контейнер*/
+.container {
+  display: grid;
+  min-height: 100vh;
+  /* Визначаємо 3 колонки: дві бічні фіксовані, центральна гнучка */
+  grid-template-columns: 250px 1fr 250px;
+  /* Визначаємо 5 рядків: висота адаптивна, крім центрального, який розтягується */
+  grid-template-rows: auto auto 1fr auto auto;
+  /* Візуально "малюємо" наш макет */
+  grid-template-areas:
+    "header header  header"
+    "left   center-top   center-top"
+    "left   center-main  right"
+    "left   center-bottom right"
+    "footer footer  footer";
+}
+
+/* Розміщуємо кожен блок у свою область на сітці */
+.block1 { grid-area: header; }
+.block2 { grid-area: left; }
+.block3 { grid-area: center-top; }
+.block4 { grid-area: center-main; }
+.block5 { grid-area: right; }
+.block6 { grid-area: center-bottom; }
+.block7 { grid-area: footer; }
+
+
+/* ---------- Стилі для конкретних блоків (косметичні) ---------- */
+.block1, .block7 {
+  display: flex; /* Flexbox все ще корисний для центрування всередині блоків */
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: #121212;
+}
+
+.block2 { 
+    background: #222; 
+}
+
+.block3 {
+    background: #23272f;
+}
+
+.block4 {
+  background: #121629;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.block5 { 
+    background: #040817; 
+}
+
+.block6 { 
+    background: #0d042e;
+}
+
+.blockX, .blockY {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #312f38;
+  color: #fff;
+  font-weight: bold;
+}
+
+.block4 img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.block p {
+  line-height: 2;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.block h3 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.block li {
+     margin-bottom: 
+     10px; font-size: 18px; 
+     font-weight: 200; 
+}
+
+ul, ol { 
+    padding-left: 25px; 
+    text-align: left; 
+}
+
+a { 
+    color: #216da0; 
+    text-decoration: none; 
+}
+
+a:hover { 
+    text-decoration: underline;
+}
+
+.js-button {
+  background-color: #4a5d7e;
+  color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.js-button:hover {
+  background-color: #5b729e;
+}
+
+.control-group input[type="number"] {
+  width: 120px;
+  padding: 10px;
+  margin-bottom: 0px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  background: #333;
+  color: #f0f0f0;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Контейнер для результату в Блоці 4 */
+.output-area {  
+  padding: 15px;
+  background: #0d042e; /* Той самий колір, що у .block6 */
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column; /* Елементи один над одним (лейбл + інпут) */
+  align-items: center;
+  gap: 8px; /* Відстань між лейблом та інпутом */
+}
+
+.control-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.hidden {
+  display: none;
+}
+
+.tools-wrapper {
+  display: flex;
+  flex-direction: row; /* Головне: ставимо елементи в ряд */
+  justify-content: space-around;
+  width: 100%;
+  padding: 0 10px; /* Невеликі бічні відступи */
+  gap: 20px;
+}
+
+.tool-column {
+  flex-basis: 50%; /* Кожна колонка займає 50% */
+  display: flex;
+  flex-direction: column; /* Елементи В КОЛОНЦІ йдуть вертикально */
+  align-items: center;
+  gap: 15px; /* Вертикальний відступ між елементами в колонці */
+}
+
+@media (max-width: 768px) {
+  
+  /* Перевизначаємо наш .container */
+  .container {
+    /* Робимо одну колонку, яка займає 100% ширини */
+    grid-template-columns: 1fr;
+    /* Кожен рядок має автоматичну висоту */
+    grid-template-rows: auto;
+    
+    /* "Малюємо" оновлений макет */
+    grid-template-areas:
+      "header"
+      "center-top"
+      "center-main"
+      "center-bottom"
+      "right"  /* "Main Facts" після зображення */
+      "left"   /* "Menu" після "Main Facts" */
+      "footer";
+  }
+
+  .block1, .block7 {
+    padding: 20px 20px; /* Зменшуємо бокові відступи */
+    flex-direction: column;  /* Складаємо елементи у стовпчик */
+    align-items: center;     /* Центруємо їх */
+    gap: 15px;
+  } 
+}
