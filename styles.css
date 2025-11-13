@@ -13,6 +13,8 @@ html, body {
   padding: 15px;
   overflow-wrap: anywhere;
   word-break: break-word;
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
 /* Головний контейнер*/
@@ -53,6 +55,8 @@ html, body {
 
 .block2 { 
     background: #222; 
+    display: flex;
+    flex-direction: column;
 }
 
 .block3 {
@@ -172,13 +176,18 @@ a:hover {
   gap: 8px; /* Відстань між лейблом та інпутом */
 }
 
+#border-controls {
+    margin-top: auto;  /* Притискає блок до низу */
+    padding-top: 20px; /* Додає трохи "повітря" над ним */
+}
+
 .control-group label {
   font-size: 14px;
   font-weight: bold;
   color: #ccc;
 }
 
-.hidden {
+#css-editor-container.hidden {
   display: none;
 }
 
@@ -197,6 +206,43 @@ a:hover {
   flex-direction: column; /* Елементи В КОЛОНЦІ йдуть вертикально */
   align-items: center;
   gap: 15px; /* Вертикальний відступ між елементами в колонці */
+}
+
+#css-editor-container {
+  width: 90%;
+  max-width: 500px;
+  margin-top: 20px;
+  padding: 20px;
+  background: #23272f; /* Колір як у .block3 для контрасту */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#css-editor-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #777;
+  background: #333;
+  color: #f0f0f0;
+  font-size: 16px;
+}
+
+.editor-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Стиль для "небезпечної" кнопки */
+.js-button.danger {
+  background-color: #a02121;
+}
+.js-button.danger:hover {
+  background-color: #c0392b;
 }
 
 @media (max-width: 768px) {
