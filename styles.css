@@ -1,3 +1,36 @@
+:root {
+  /* Головна палітра */
+  --color-bg: #121212;
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #ccc;
+  --color-link: #216da0;
+  
+  /* Фони блоків */
+  --color-bg-block-header: #121212;
+  --color-bg-block-menu: #222;
+  --color-bg-block-controls: #23272f;
+  --color-bg-block-main: #121629;
+  --color-bg-block-aside: #040817;
+  --color-bg-block-content: #0d042e;
+  --color-bg-block-accent: #312f38; /* .blockX, .blockY */
+
+  /* Фони UI елементів */
+  --color-bg-input: #333;
+  --color-bg-output: var(--color-bg-block-content);
+  --color-bg-editor: var(--color-bg-block-controls);
+
+  /* Кнопки */
+  --color-button-primary-bg: #4a5d7e;
+  --color-button-primary-hover: #5b729e;
+  --color-button-danger-bg: #a02121;
+  --color-button-danger-hover: #c0392b;
+
+  /* Рамки */
+  --color-border-input: #777;
+  --color-border-button: var(--color-text-primary);
+  --color-border-block: transparent;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,15 +38,15 @@
 }
 html, body {
   height: 100%;
-  background: #121212;
-  color: #f0f0f0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
   font-family: Arial, sans-serif;
 }
 .block {
   padding: 15px;
   overflow-wrap: anywhere;
   word-break: break-word;
-  border: 3px solid transparent;
+  border: 3px solid var(--color-border-block);
   transition: border-color 0.3s ease;
 }
 
@@ -21,11 +54,8 @@ html, body {
 .container {
   display: grid;
   min-height: 100vh;
-  /* Визначаємо 3 колонки: дві бічні фіксовані, центральна гнучка */
   grid-template-columns: 250px 1fr 250px;
-  /* Визначаємо 5 рядків: висота адаптивна, крім центрального, який розтягується */
   grid-template-rows: auto auto 1fr auto auto;
-  /* Візуально "малюємо" наш макет */
   grid-template-areas:
     "header header  header"
     "left   center-top   center-top"
@@ -46,25 +76,25 @@ html, body {
 
 /* ---------- Стилі для конкретних блоків (косметичні) ---------- */
 .block1, .block7 {
-  display: flex; /* Flexbox все ще корисний для центрування всередині блоків */
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
-  background: #121212;
+  background: var(--color-bg-block-header);
 }
 
 .block2 { 
-    background: #222; 
+    background: var(--color-bg-block-menu); 
     display: flex;
     flex-direction: column;
 }
 
 .block3 {
-    background: #23272f;
+    background: var(--color-bg-block-controls);
 }
 
 .block4 {
-  background: #121629;
+  background: var(--color-bg-block-main);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,18 +103,18 @@ html, body {
 }
 
 .block5 { 
-    background: #040817; 
+    background: var(--color-bg-block-aside); 
 }
 
 .block6 { 
-    background: #0d042e;
+    background: var(--color-bg-block-content);
 }
 
 .blockX, .blockY {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: #312f38;
-  color: #fff;
+  background: var(--color-bg-block-accent);
+  color: var(--color-text-primary);
   font-weight: bold;
 }
 
@@ -122,7 +152,7 @@ ul, ol {
 }
 
 a { 
-    color: #216da0; 
+    color: var(--color-link); 
     text-decoration: none; 
 }
 
@@ -131,9 +161,9 @@ a:hover {
 }
 
 .js-button {
-  background-color: #4a5d7e;
-  color: #f0f0f0;
-  border: 1px solid #f0f0f0;
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-button);
   padding: 10px 15px;
   font-size: 16px;
   font-weight: bold;
@@ -143,7 +173,7 @@ a:hover {
 }
 
 .js-button:hover {
-  background-color: #5b729e;
+  background-color: var(--color-button-primary-hover);
 }
 
 .control-group input[type="number"] {
@@ -151,9 +181,9 @@ a:hover {
   padding: 10px;
   margin-bottom: 0px;
   border-radius: 5px;
-  border: 1px solid #777;
-  background: #333;
-  color: #f0f0f0;
+  border: 1px solid var(--color-border-input);
+  background: var(--color-bg-input);
+  color: var(--color-text-primary);
   font-size: 16px;
   text-align: center;
 }
@@ -161,11 +191,11 @@ a:hover {
 /* Контейнер для результату в Блоці 4 */
 .output-area {  
   padding: 15px;
-  background: #0d042e; /* Той самий колір, що у .block6 */
+  background: var(--color-bg-output);
   border-radius: 8px;
   font-size: 18px;
   font-weight: bold;
-  color: #fff;
+  color: var(--color-text-primary);
   text-align: center;
 }
 
@@ -184,7 +214,7 @@ a:hover {
 .control-group label {
   font-size: 14px;
   font-weight: bold;
-  color: #ccc;
+  color: var(--color-text-secondary);
 }
 
 #css-editor-container.hidden {
@@ -213,7 +243,7 @@ a:hover {
   max-width: 500px;
   margin-top: 20px;
   padding: 20px;
-  background: #23272f; /* Колір як у .block3 для контрасту */
+  background: var(--color-bg-editor);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -224,9 +254,9 @@ a:hover {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #777;
-  background: #333;
-  color: #f0f0f0;
+  border: 1px solid var(--color-border-input);
+  background: var(--color-bg-input);
+  color: var(--color-text-primary);
   font-size: 16px;
 }
 
@@ -239,10 +269,10 @@ a:hover {
 
 /* Стиль для "небезпечної" кнопки */
 .js-button.danger {
-  background-color: #a02121;
+  background-color: var(--color-button-danger-bg);
 }
 .js-button.danger:hover {
-  background-color: #c0392b;
+  background-color: var(--color-button-danger-hover);
 }
 
 @media (max-width: 768px) {
