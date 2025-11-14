@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
               side = 0;
 
           const area = (5 * Math.pow(side, 2)) / (4 * Math.tan(Math.PI / 5));     
-          const resultText = `Area: ${area.toFixed(2)}`;    
+          const resultText = `Площа: ${area.toFixed(2)}`;    
           
           let outputDiv = pentagonColumn.querySelector('.output-area');
           if (!outputDiv) {
